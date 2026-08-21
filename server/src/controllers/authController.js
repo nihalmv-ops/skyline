@@ -124,8 +124,22 @@ const getMe = async (req, res) => {
   });
 };
 
+const getAdminDashboard = async (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Welcome to SuperMart Admin Dashboard",
+    user: {
+      id: req.user._id,
+      name: req.user.name,
+      email: req.user.email,
+      role: req.user.role,
+    },
+  });
+};
+
 module.exports = {
   registerUser,
   loginUser,
   getMe,
+  getAdminDashboard,
 };
