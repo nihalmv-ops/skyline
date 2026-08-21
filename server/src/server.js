@@ -15,9 +15,11 @@ const PORT = process.env.PORT || 5000;
 
 const productRoutes = require("./routes/productRoutes");
 
+
 const authRoutes = require("./routes/authRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+const adminOrderRoutes = require("./routes/adminOrderRoutes");
 
 // Connect to MongoDB
 connectDB();
@@ -30,6 +32,8 @@ app.use("/api/products", productRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/admin/orders", adminOrderRoutes);
+
 
 // Test API route
 app.get("/", (req, res) => {
