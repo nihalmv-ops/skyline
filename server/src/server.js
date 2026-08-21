@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 5000;
 const productRoutes = require("./routes/productRoutes");
 
 const authRoutes = require("./routes/authRoutes");
+const cartRoutes = require("./routes/cartRoutes");
 
 // Connect to MongoDB
 connectDB();
@@ -26,6 +27,7 @@ app.use(express.json());
 
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/cart", cartRoutes);
 
 // Test API route
 app.get("/", (req, res) => {
