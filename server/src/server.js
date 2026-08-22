@@ -20,6 +20,7 @@ const authRoutes = require("./routes/authRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const adminOrderRoutes = require("./routes/adminOrderRoutes");
+const adminDashboardRoutes = require("./routes/adminDashboardRoutes");
 
 // Connect to MongoDB
 connectDB();
@@ -33,6 +34,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/admin/orders", adminOrderRoutes);
+
+app.use(
+  "/api/admin/dashboard",
+  adminDashboardRoutes
+);
 
 
 // Test API route
