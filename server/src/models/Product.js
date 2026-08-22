@@ -11,7 +11,6 @@ const productSchema = new mongoose.Schema(
     description: {
       type: String,
       required: true,
-      trim: true,
     },
 
     price: {
@@ -21,9 +20,9 @@ const productSchema = new mongoose.Schema(
     },
 
     category: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
       required: true,
-      trim: true,
     },
 
     stock: {
@@ -41,7 +40,6 @@ const productSchema = new mongoose.Schema(
     brand: {
       type: String,
       default: "",
-      trim: true,
     },
 
     isActive: {

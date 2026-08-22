@@ -24,6 +24,8 @@ const adminOrderRoutes = require("./routes/adminOrderRoutes");
 const adminDashboardRoutes = require("./routes/adminDashboardRoutes");
 const adminProductRoutes = require("./routes/adminProductRoutes");
 
+const categoryRoutes = require("./routes/categoryRoutes");
+
 // Connect to MongoDB
 connectDB();
 
@@ -45,6 +47,11 @@ app.use(
 app.use(
   "/api/admin/products",
   adminProductRoutes
+);
+
+app.use(
+  "/api/categories",
+  categoryRoutes
 );
 
 
