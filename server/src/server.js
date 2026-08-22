@@ -19,8 +19,10 @@ const productRoutes = require("./routes/productRoutes");
 const authRoutes = require("./routes/authRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+
 const adminOrderRoutes = require("./routes/adminOrderRoutes");
 const adminDashboardRoutes = require("./routes/adminDashboardRoutes");
+const adminProductRoutes = require("./routes/adminProductRoutes");
 
 // Connect to MongoDB
 connectDB();
@@ -38,6 +40,11 @@ app.use("/api/admin/orders", adminOrderRoutes);
 app.use(
   "/api/admin/dashboard",
   adminDashboardRoutes
+);
+
+app.use(
+  "/api/admin/products",
+  adminProductRoutes
 );
 
 

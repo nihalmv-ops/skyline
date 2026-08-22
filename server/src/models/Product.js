@@ -26,11 +26,6 @@ const productSchema = new mongoose.Schema(
       trim: true,
     },
 
-    brand: {
-      type: String,
-      trim: true,
-    },
-
     stock: {
       type: Number,
       required: true,
@@ -38,15 +33,20 @@ const productSchema = new mongoose.Schema(
       default: 0,
     },
 
-    unit: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
     image: {
       type: String,
       default: "",
+    },
+
+    brand: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+
+    isActive: {
+      type: Boolean,
+      default: true,
     },
   },
   {
