@@ -147,7 +147,7 @@ const PopularProducts = () => {
         {/* =========================
             FILTER BUTTONS
         ========================== */}
-        <div className="mt-6 flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+        <div className="hide-scrollbar mt-6 flex gap-2 pb-2">
 
           {filters.map((filter) => {
             const isActive = activeFilter === filter;

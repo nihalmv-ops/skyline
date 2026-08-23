@@ -12,8 +12,11 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
 
+import { useCart } from "../context/CartContext";
+
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { cartCount } = useCart();
 
   const navLinks = [
     {
@@ -120,9 +123,9 @@ const Navbar = () => {
             >
               <ShoppingCart size={20} strokeWidth={1.8} />
 
-              <span className="absolute -right-1 -top-1 flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-blue-600 px-1 text-[8px] font-bold text-white">
-                3
-              </span>
+             <span className="absolute -right-1 -top-1 flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-blue-600 px-1 text-[8px] font-bold text-white">
+  {cartCount}
+</span>
             </Link>
 
             {/* USER */}

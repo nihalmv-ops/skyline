@@ -8,6 +8,9 @@ import MainLayout from "./layouts/MainLayout";
 
 import Home from "./pages/Home";
 
+import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -18,7 +21,18 @@ const App = () => {
           <Route
             path="/"
             element={<Home />}
+
           />
+
+          <Route
+  path="/products/:id"
+  element={<ProductDetails />}
+/>
+
+<Route
+  path="/cart"
+  element={<Cart />}
+/>
 
         </Route>
 

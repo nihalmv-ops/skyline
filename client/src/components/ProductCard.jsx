@@ -1,10 +1,21 @@
 import { Heart, ShoppingCart, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const ProductCard = ({ product, onAddToCart }) => {
+import { useCart } from "../context/CartContext";
+
+const ProductCard = ({ product }) => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart(product, 1);
+  };
+
   return (
     <div className="product-card group relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
 
-      {/* Wishlist */}
+      {/* =========================
+          WISHLIST
+      ========================== */}
       <button
         type="button"
         className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#09245f] shadow-sm transition-all hover:bg-blue-50 hover:text-blue-600"
@@ -16,31 +27,45 @@ const ProductCard = ({ product, onAddToCart }) => {
         />
       </button>
 
-      {/* Product Image */}
+      {/* =========================
+          PRODUCT IMAGE
+      ========================== */}
       <div className="product-image-container flex h-[190px] items-center justify-center overflow-hidden bg-white p-5 sm:h-[205px]">
 
-        <img
-          src={product.image}
-          alt={product.name}
-          className="product-image h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
-        />
+        <Link
+          to={`/products/${product.id}`}
+          className="flex h-full w-full items-center justify-center"
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            className="product-image h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
+          />
+        </Link>
 
       </div>
 
-      {/* Product Details */}
+      {/* =========================
+          PRODUCT DETAILS
+      ========================== */}
       <div className="p-4">
 
         {/* Product Name */}
-        <h3 className="truncate text-sm font-bold text-[#09245f]">
+        <Link
+          to={`/products/${product.id}`}
+          className="block truncate text-sm font-bold text-[#09245f] transition-colors hover:text-blue-600"
+        >
           {product.name}
-        </h3>
+        </Link>
 
         {/* Quantity */}
         <p className="mt-1 text-xs text-slate-500">
           {product.quantity}
         </p>
 
-        {/* Rating */}
+        {/* =========================
+            RATING
+        ========================== */}
         <div className="mt-2 flex items-center gap-1">
 
           <div className="flex items-center">
@@ -63,9 +88,12 @@ const ProductCard = ({ product, onAddToCart }) => {
 
         </div>
 
-        {/* Price + Cart */}
+        {/* =========================
+            PRICE + CART
+        ========================== */}
         <div className="mt-3 flex items-center justify-between gap-2">
 
+          {/* Price */}
           <div>
             <p className="text-lg font-extrabold text-[#09245f]">
               ₹{product.price}
@@ -78,13 +106,13 @@ const ProductCard = ({ product, onAddToCart }) => {
             )}
           </div>
 
+          {/* Add To Cart */}
           <button
             type="button"
-            onClick={() => onAddToCart(product)}
+            onClick={handleAddToCart}
             className="flex h-9 items-center gap-1.5 rounded-full bg-blue-600 px-3.5 text-[11px] font-bold text-white shadow-md shadow-blue-600/20 transition-all duration-300 hover:bg-blue-700 hover:shadow-lg"
           >
             <ShoppingCart size={14} />
-
             Add to Cart
           </button>
 

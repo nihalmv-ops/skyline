@@ -253,7 +253,7 @@ button {
 
 @media (max-width: 1024px) {
   .supermart-hero {
-    min-height: auto;
+    min-height: 0;
   }
 
   .hero-dots-one {
@@ -275,7 +275,7 @@ button {
 
 @media (max-width: 767px) {
   .supermart-hero {
-    min-height: auto;
+   min-height: 0;
   }
 
   .hero-dots-one {
@@ -411,3 +411,31 @@ button {
     height: 130px;
   }
 }
+
+
+
+
+
+/* Hide horizontal scrollbar */
+/* Hide horizontal scrollbar */
+.hide-scrollbar {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Mobile product cards */
+
+@media (max-width: 640px) {
+  .product-image-container {
+    height: 150px;
+  }
+
+  .product-card .product-image {
+    max-width: 90%;
+  }
+}
+
+
