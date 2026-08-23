@@ -16,7 +16,7 @@ const Logo = () => {
       {/* Logo Text */}
       <div className="leading-none">
         <h1 className="text-xl font-extrabold tracking-tight text-blue-700">
-          Skyline<span className="text-slate-900">Supermarket</span>
+          Skyline<span className="text-slate-900">Market</span>
         </h1>
 
         <p className="mt-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">

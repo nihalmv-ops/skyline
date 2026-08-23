@@ -55,7 +55,7 @@ const categories = [
 
 const CategorySection = () => {
   return (
-    <section className="bg-white px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+    <section className="bg-sky-100 px-4 py-12 sm:px-6 md:py-16 lg:px-8">
 
       <div className="mx-auto max-w-7xl">
 
