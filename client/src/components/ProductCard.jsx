@@ -2,6 +2,7 @@ import { Heart, ShoppingCart, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -10,22 +11,35 @@ const ProductCard = ({ product }) => {
     addToCart(product, 1);
   };
 
+  const {
+  toggleWishlist,
+  isInWishlist,
+} = useWishlist();
+
+const wishlisted = isInWishlist(product.id);
+
   return (
     <div className="product-card group relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
 
-      {/* =========================
-          WISHLIST
-      ========================== */}
-      <button
-        type="button"
-        className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#09245f] shadow-sm transition-all hover:bg-blue-50 hover:text-blue-600"
-        aria-label={`Add ${product.name} to wishlist`}
-      >
-        <Heart
-          size={17}
-          strokeWidth={1.8}
-        />
-      </button>
+    <button
+  type="button"
+  onClick={() => toggleWishlist(product)}
+  className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-sm transition-all hover:scale-105"
+  aria-label={
+    wishlisted
+      ? "Remove from wishlist"
+      : "Add to wishlist"
+  }
+>
+  <Heart
+    size={17}
+    className={
+      wishlisted
+        ? "fill-red-500 text-red-500"
+        : "text-[#09245f]"
+    }
+  />
+</button>
 
       {/* =========================
           PRODUCT IMAGE

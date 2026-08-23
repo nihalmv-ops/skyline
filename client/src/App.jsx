@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
 
 const App = () => {
   return (
@@ -32,6 +33,11 @@ const App = () => {
 <Route
   path="/cart"
   element={<Cart />}
+/>
+
+<Route
+  path="/wishlist"
+  element={<Wishlist />}
 />
 
         </Route>

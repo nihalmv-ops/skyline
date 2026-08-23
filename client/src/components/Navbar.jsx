@@ -13,10 +13,12 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
 
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { cartCount } = useCart();
+  const { wishlistCount } = useWishlist();
 
   const navLinks = [
     {
@@ -107,13 +109,18 @@ const Navbar = () => {
             </div>
 
             {/* WISHLIST */}
-            <Link
-              to="/wishlist"
-              className="relative flex h-8 w-8 items-center justify-center rounded-full text-[#09245f] transition hover:bg-blue-50 hover:text-blue-600"
-              aria-label="Wishlist"
-            >
-              <Heart size={19} strokeWidth={1.8} />
-            </Link>
+          <Link
+  to="/wishlist"
+  className="relative"
+>
+  <Heart size={21} />
+
+  {wishlistCount > 0 && (
+    <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[8px] font-bold text-white">
+      {wishlistCount}
+    </span>
+  )}
+</Link>
 
             {/* CART */}
             <Link
