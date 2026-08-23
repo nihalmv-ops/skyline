@@ -50,3 +50,364 @@ button {
 ::-webkit-scrollbar-thumb:hover {
   background: #60a5fa;
 }
+
+
+
+/* =========================================
+   SUPERMART HERO
+========================================= */
+
+.supermart-hero {
+  position: relative;
+  min-height: 620px;
+  background:
+    radial-gradient(
+      circle at 78% 45%,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(220, 242, 255, 0.7) 32%,
+      transparent 58%
+    ),
+    linear-gradient(
+      135deg,
+      #e7f7ff 0%,
+      #cdeeff 48%,
+      #75bce0 100%
+    );
+}
+
+/* =========================================
+   BACKGROUND SHAPES
+========================================= */
+
+.hero-shape {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+}
+
+.hero-shape-one {
+  width: 260px;
+  height: 260px;
+  left: -130px;
+  top: -100px;
+  background: rgba(103, 194, 255, 0.2);
+}
+
+.hero-shape-two {
+  width: 300px;
+  height: 300px;
+  right: -130px;
+  top: -120px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.hero-shape-three {
+  width: 240px;
+  height: 240px;
+  left: -100px;
+  bottom: -130px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* =========================================
+   DOT PATTERNS
+========================================= */
+
+.hero-dots {
+  position: absolute;
+  width: 75px;
+  height: 55px;
+  opacity: 0.35;
+
+  background-image: radial-gradient(
+    #4bb7ff 2px,
+    transparent 2px
+  );
+
+  background-size: 13px 13px;
+}
+
+.hero-dots-one {
+  left: 47%;
+  top: 100px;
+}
+
+.hero-dots-two {
+  right: 5%;
+  bottom: 55px;
+}
+
+/* =========================================
+   DELIVERY BADGE
+========================================= */
+
+.hero-delivery-badge {
+  animation: heroBadgeFloat 4s ease-in-out infinite;
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.hero-heading-line {
+  position: absolute;
+  left: 0;
+  right: -10px;
+  bottom: -8px;
+  height: 3px;
+  border-radius: 999px;
+  background: #1769ff;
+  transform: rotate(-2deg);
+}
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.hero-primary-button {
+  min-width: 195px;
+}
+
+/* =========================================
+   HERO IMAGE
+========================================= */
+
+.hero-image-wrapper {
+  isolation: isolate;
+}
+
+.hero-main-circle {
+  box-shadow:
+    0 25px 80px rgba(30, 136, 229, 0.12);
+}
+
+.hero-inner-circle {
+  opacity: 0.8;
+}
+
+.hero-grocery-image {
+  animation: groceryFloat 5s ease-in-out infinite;
+  filter: drop-shadow(
+    0 25px 25px rgba(0, 72, 145, 0.18)
+  );
+}
+
+/* =========================================
+   FRESH BADGE
+========================================= */
+
+.hero-fresh-badge {
+  animation: freshBadgeFloat 4.5s ease-in-out infinite;
+}
+
+/* =========================================
+   LEAVES
+========================================= */
+
+.hero-leaf {
+  position: absolute;
+  z-index: 15;
+  width: 75px;
+  height: 100px;
+  transform: rotate(30deg);
+}
+
+.hero-leaf span {
+  position: absolute;
+  display: block;
+  width: 25px;
+  height: 65px;
+  border-radius: 100% 0 100% 0;
+  background: #75b947;
+}
+
+.hero-leaf span:first-child {
+  left: 25px;
+  top: 0;
+  transform: rotate(20deg);
+}
+
+.hero-leaf span:last-child {
+  left: 45px;
+  top: 25px;
+  transform: rotate(65deg);
+}
+
+.hero-leaf-one {
+  right: 15%;
+  top: 2%;
+  transform: rotate(-25deg);
+}
+
+.hero-leaf-two {
+  right: 3%;
+  bottom: 12%;
+  transform: rotate(70deg) scale(0.8);
+}
+
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+  .supermart-hero {
+    min-height: auto;
+  }
+
+  .hero-dots-one {
+    left: 55%;
+  }
+
+  .hero-fresh-badge {
+    right: 2%;
+  }
+
+  .hero-leaf-one {
+    right: 7%;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+  .supermart-hero {
+    min-height: auto;
+  }
+
+  .hero-dots-one {
+    top: 80px;
+    right: 20px;
+    left: auto;
+  }
+
+  .hero-dots-two {
+    display: none;
+  }
+
+  .hero-image-wrapper {
+    min-height: 370px;
+  }
+
+  .hero-main-circle {
+    right: 50%;
+    top: 7%;
+    transform: translateX(50%);
+  }
+
+  .hero-inner-circle {
+    right: 50%;
+    top: 13%;
+    transform: translateX(50%);
+  }
+
+  .hero-fresh-badge {
+    right: 2%;
+    top: 4%;
+    width: 90px;
+    height: 90px;
+  }
+
+  .hero-fresh-badge p {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .hero-leaf-one {
+    right: 5%;
+    top: 0;
+    transform: scale(0.65) rotate(-25deg);
+  }
+
+  .hero-leaf-two {
+    right: 0;
+    bottom: 4%;
+    transform: scale(0.55) rotate(70deg);
+  }
+
+  .hero-heading-line {
+    right: 0;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .hero-image-wrapper {
+    min-height: 320px;
+  }
+
+  .hero-main-circle {
+    width: 270px;
+    height: 270px;
+  }
+
+  .hero-inner-circle {
+    width: 235px;
+    height: 235px;
+    border-width: 12px;
+  }
+
+  .hero-grocery-image {
+    width: 290px;
+  }
+
+  .hero-fresh-badge {
+    width: 75px;
+    height: 75px;
+  }
+
+  .hero-fresh-badge p {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .hero-delivery-badge {
+    margin-bottom: 18px;
+  }
+
+  .hero-benefit {
+    padding-right: 10px;
+  }
+}
+
+
+/* =========================================
+   CATEGORY SECTION
+========================================= */
+
+.category-card {
+  will-change: transform;
+}
+
+.category-image-wrapper {
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(170, 219, 231, 0.85),
+      transparent 70%
+    ),
+    linear-gradient(
+      135deg,
+      #95c1d7 0%,
+      #cdeeff 48%,
+      #eaf8ff 100%
+    );
+}
+
+.category-image {
+  filter: drop-shadow(
+    0 8px 10px rgba(30, 64, 175, 0.08)
+  );
+}
+
+@media (max-width: 640px) {
+  .category-image-wrapper {
+    height: 130px;
+  }
+}
