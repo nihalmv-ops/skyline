@@ -12,6 +12,9 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 
+import Checkout from "./pages/Checkout";
+import OrderSuccess from "./pages/OrderSuccess";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -38,6 +41,16 @@ const App = () => {
 <Route
   path="/wishlist"
   element={<Wishlist />}
+/>
+
+<Route
+  path="/checkout"
+  element={<Checkout />}
+/>
+
+<Route
+  path="/order-success"
+  element={<OrderSuccess />}
 />
 
         </Route>

@@ -218,12 +218,12 @@ const Cart = () => {
 
             </div>
 
-            <button
-              type="button"
-              className="mt-6 flex h-12 w-full items-center justify-center rounded-xl bg-blue-600 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700"
-            >
-              Proceed to Checkout
-            </button>
+           <Link
+  to="/checkout"
+  className="mt-6 flex h-12 w-full items-center justify-center rounded-xl bg-blue-600 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700"
+>
+  Proceed to Checkout
+</Link>
 
             <Link
               to="/products"
