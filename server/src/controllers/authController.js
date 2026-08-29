@@ -1,25 +1,20 @@
+const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../models/User");
 
-const generateToken = (user) => {
-  return jwt.sign(
-    {
-      id: user._id,
-      role: user.role,
-    },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: "7d",
-    }
-  );
-};
+// ==========================================
+// REGISTER
+// ==========================================
 
-// Register
-const registerUser = async (req, res) => {
+const register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {
+      name,
+      email,
+      password,
+    } = req.body;
 
+    // Check required fields
     if (!name || !email || !password) {
       return res.status(400).json({
         success: false,
@@ -27,7 +22,10 @@ const registerUser = async (req, res) => {
       });
     }
 
-    const existingUser = await User.findOne({ email });
+    // Check existing user
+    const existingUser = await User.findOne({
+      email,
+    });
 
     if (existingUser) {
       return res.status(400).json({
@@ -36,43 +34,62 @@ const registerUser = async (req, res) => {
       });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // Hash password
+    const hashedPassword = await bcrypt.hash(
+      password,
+      10
+    );
 
+    // Create user
     const user = await User.create({
       name,
       email,
       password: hashedPassword,
-      role: "customer",
     });
 
-    const token = generateToken(user);
-
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
-      message: "User registered successfully",
+      message: "Registration successful",
       user: {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role,
       },
-      token,
     });
+
   } catch (error) {
-    res.status(500).json({
+    console.error("Register Error:", error);
+
+    return res.status(500).json({
       success: false,
-      message: "Registration failed",
-      error: error.message,
+      message: "Server error during registration",
     });
   }
 };
 
-// Login
-const loginUser = async (req, res) => {
-  try {
-    const { email, password } = req.body;
+// ==========================================
+// LOGIN
+// ==========================================
 
-    const user = await User.findOne({ email });
+const login = async (req, res) => {
+  try {
+    const {
+      email,
+      password,
+    } = req.body;
+
+    // Check fields
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Please provide email and password",
+      });
+    }
+
+    // Find user
+    const user = await User.findOne({
+      email,
+    });
 
     if (!user) {
       return res.status(401).json({
@@ -81,10 +98,12 @@ const loginUser = async (req, res) => {
       });
     }
 
-    const isPasswordCorrect = await bcrypt.compare(
-      password,
-      user.password
-    );
+    // Compare password
+    const isPasswordCorrect =
+      await bcrypt.compare(
+        password,
+        user.password
+      );
 
     if (!isPasswordCorrect) {
       return res.status(401).json({
@@ -93,53 +112,46 @@ const loginUser = async (req, res) => {
       });
     }
 
-    const token = generateToken(user);
+    // Create JWT
+    const token = jwt.sign(
+      {
+        id: user._id,
+        email: user.email,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "7d",
+      }
+    );
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Login successful",
+
+      token,
+
       user: {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role,
       },
-      token,
     });
+
   } catch (error) {
-    res.status(500).json({
+    console.error("Login Error:", error);
+
+    return res.status(500).json({
       success: false,
-      message: "Login failed",
-      error: error.message,
+      message: "Server error during login",
     });
   }
 };
 
-
-
-const getMe = async (req, res) => {
-  res.status(200).json({
-    success: true,
-    user: req.user,
-  });
-};
-
-const getAdminDashboard = async (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "Welcome to SuperMart Admin Dashboard",
-    user: {
-      id: req.user._id,
-      name: req.user.name,
-      email: req.user.email,
-      role: req.user.role,
-    },
-  });
-};
+// ==========================================
+// EXPORT
+// ==========================================
 
 module.exports = {
-  registerUser,
-  loginUser,
-  getMe,
-  getAdminDashboard,
+  register,
+  login,
 };
