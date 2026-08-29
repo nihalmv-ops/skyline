@@ -15,6 +15,10 @@ import Wishlist from "./pages/Wishlist";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
 
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -51,6 +55,18 @@ const App = () => {
 <Route
   path="/order-success"
   element={<OrderSuccess />}
+/>
+
+<Route
+  path="/login"
+  element={<Login />}
+/>
+
+
+
+<Route
+  path="/register"
+  element={<Register />}
 />
 
         </Route>
